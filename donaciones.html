@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Donaciones</title>
+  <link rel="icon" type="image/png" href="images/Ender.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .fondo-barra {
+      background-image: url('images/1.jpg');
+      background-size: cover;
+      background-position: center 10%;
+      height: 150px;
+      width: 100%;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 15px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      display: inline-block;
+      background-color: #444;
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #00ccff;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    nav a.activo {
+      background-color: #00ccff;
+      color: black;
+      box-shadow: 0 0 8px #00ccff;
+    }
+
+    nav a i {
+      margin-right: 8px;
+    }
+
+    .fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/font3.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1; /* Asegura que el fondo esté detrás del contenido */
+      filter: blur(5px); /* Aplica el desenfoque con un valor de 5px */
+      opacity: 0.3
+    }
+
+    .contenido {
+      position: relative;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .entrada {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .entrada h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fondo-barra"></div>
+
+  <nav>
+    <a href="index.html" id="homeLink"><i class="fas fa-home"></i>Inicio</a>
+    <a href="social.html" id="infoLink"><i class="fas fa-users"></i>Redes Sociales</a>
+    <a href="donaciones.html" id="donacionesLink"><i class="fas fa-hand-holding-usd"></i>Donaciones</a>
+    <a href="interactividad.html" id="interactividadLink"><i class="fas fa-gamepad"></i>Interactividad</a>
+    <a href="proyectos.html" id="proyectosLink"><i class="fas fa-briefcase"></i>Proyectos</a>
+  </nav>
+
+  <div class="fondo"></div>
+
+  <div class="contenido" id="blog">
+    <h1>Apóyanos</h1>
+    <div class="entrada">
+      <h2>¿Por qué donar?</h2>
+      <p>Tu apoyo nos permite continuar con el proyecto, mejorar la calidad del contenido y ofrecer nuevas funciones.</p>
+    </div>
+  </div>
+
+  <script>
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (currentPage === 'index.html') {
+      document.getElementById('homeLink').classList.add('activo');
+    } else if (currentPage === 'social.html') {
+      document.getElementById('infoLink').classList.add('activo');
+    } else if (currentPage === 'donaciones.html') {
+      document.getElementById('donacionesLink').classList.add('activo');
+    } else if (currentPage === 'interactividad.html') {
+      document.getElementById('interactividadLink').classList.add('activo');
+    } else if (currentPage === 'proyectos.html') {
+      document.getElementById('proyectosLink').classList.add('activo');
+    }
+  </script>
+
+</body>
+</html>

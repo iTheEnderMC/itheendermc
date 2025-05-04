@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>itheendermc | Inicio</title>
+  <link rel="icon" type="image/png" href="images/Ender.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Agregar Font Awesome -->
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Fondo encima de la barra (antes de la barra de navegación) */
+    .fondo-barra {
+      background-image: url('images/1.jpg'); /* Asegúrate de que la carpeta y el nombre sean correctos */
+      background-size: cover;
+      background-position: center 10%;
+      height: 150px;
+      width: 100%;
+    }
+
+    /* Barra de navegación */
+    nav {
+      background-color: #333;
+      padding: 15px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      display: inline-block;
+      background-color: #444;
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #00ccff;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    nav a.activo {
+      background-color: #00ccff;
+      color: black;
+      box-shadow: 0 0 8px #00ccff;
+    }
+
+    /* Iconos */
+    nav a i {
+      margin-right: 8px;  /* Espacio entre el icono y el texto */
+    }
+
+    /* Contenido */
+    .contenido {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .entrada {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .entrada h2 {
+      margin-top: 0;
+    }
+
+    .bienvenida {
+      animation: fadeInUp 1.5s ease-out;
+      font-size: 2.2em;
+      color: #222;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .entrada-con-gif {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .gif-derecha {
+      width: 80px;
+      height: auto;
+      margin-left: 20px; /* Empuja el GIF más a la derecha */
+    }
+
+    .fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/font3.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1; /* Asegura que el fondo esté detrás del contenido */
+      filter: blur(5px); /* Aplica el desenfoque con un valor de 5px */
+      opacity: 0.3
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Fondo encima de la barra -->
+  <div class="fondo-barra"></div>
+
+  <!-- Barra de navegación -->
+  <nav>
+    <a href="index.html" id="homeLink"><i class="fas fa-home"></i>Inicio</a>
+    <a href="social.html" id="infoLink"><i class="fas fa-users"></i>Redes Sociales</a>
+    <a href="donaciones.html" id="donacionesLink"><i class="fas fa-hand-holding-usd"></i>Donaciones</a>
+    <a href="interactividad.html" id="interactividadLink"><i class="fas fa-gamepad"></i>Interactividad</a>
+    <a href="proyectos.html" id="proyectosLink"><i class="fas fa-briefcase"></i>Proyectos</a>
+  </nav>
+
+  <!-- Fondo de la página -->
+  <div class="fondo"></div>
+
+  <!-- Contenido -->
+  <div class="contenido" id="home">
+    <h1 class="bienvenida">¡Hola!</h1>
+
+    <!-- Aquí agregamos el contenido del blog -->
+    <div id="blog"></div>
+
+  </div>
+
+  <script>
+    // Agregar clases activas a los enlaces según la página actual
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    if (currentPage === 'index.html') {
+      document.getElementById('homeLink').classList.add('activo');
+    } else if (currentPage === 'social.html') {
+      document.getElementById('infoLink').classList.add('activo');
+    } else if (currentPage === 'donaciones.html') {
+      document.getElementById('donacionesLink').classList.add('activo');
+    } else if (currentPage === 'interactividad.html') {
+      document.getElementById('interactividadLink').classList.add('activo');
+    } else if (currentPage === 'proyectos.html') {
+      document.getElementById('proyectosLink').classList.add('activo');
+    }
+
+
+    const entradas = [
+      {
+        titulo: "Nada interesante.",
+        contenido: `
+          <div class="entrada-con-gif">
+            <p>
+              Por el momento no tengo nada que interesante que narrar, vuelve pronto, quizás abre agrego algo.
+            </p>
+            <img src="images/cat.gif" alt="Gatito esperando..." class="gif-derecha">
+          </div>
+        `
+      }
+    ];
+
+    const blog = document.getElementById("blog");
+
+    entradas.forEach(entrada => {
+      const div = document.createElement("div");
+      div.className = "entrada";
+      div.innerHTML = `<h2>${entrada.titulo}</h2><p>${entrada.contenido}</p>`;
+      blog.appendChild(div);
+    });
+  </script>
+
+</body>
+</html>
